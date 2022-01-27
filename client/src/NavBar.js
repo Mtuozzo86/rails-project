@@ -1,11 +1,17 @@
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <nav>
       <h4>ThoughtSpace</h4>
       <div className="user">
-        <p>Welcome</p>
-        <p>Create Account</p>
+        <Link to="/login">
+          <p>Welcome</p>
+        </Link>
+
+        <Link to="/create">
+          <p>Create Account</p>
+        </Link>
       </div>
     </nav>
   );
