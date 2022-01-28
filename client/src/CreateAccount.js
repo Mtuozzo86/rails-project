@@ -8,6 +8,9 @@ function CreateAccount() {
         <div>
           Create Your Password: <input type="password"></input>
         </div>
+        <div>
+          Confirm Password: <input type="password"></input>
+        </div>
         <button type="submit">Enter</button>
       </form>
     </div>
