@@ -1,10 +1,12 @@
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-function NavBar({ user }) {
+function NavBar({ name }) {
+  console.log(name);
+
   return (
     <nav>
       <h4>ThoughtSpace</h4>
-      {user ? <p style={{ color: "blue" }}>Welcome, {user}!</p> : null}
+      {name ? <p style={{ color: "blue" }}>Welcome, {name}!</p> : null}
       <div className="user">
         <Link to="/login">
           <p>Welcome</p>

@@ -6,11 +6,19 @@ function MainLogin({ userInfo }) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  console.log(username);
 
   function handleSubmit(e) {
     e.preventDefault();
-    userInfo(username);
+
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ username }),
+    })
+      .then((resp) => resp.json())
+      .then((user) => userInfo(user.username));
     history("/content");
   }
 
@@ -29,7 +37,7 @@ function MainLogin({ userInfo }) {
         </div>
         <div>
           Password:{" "}
-          <input onChange={handlePassword} value={password} type="password" />
+          {/* <input onChange={handlePassword} value={password} type="password" /> */}
         </div>
         <button type="submit">Enter</button>
       </form>

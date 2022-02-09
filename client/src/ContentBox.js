@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EditThought from "./EditThought";
 
-function ContentBox({ title, thoughts, user, onDelete, onSubmitEdit }) {
+function ContentBox({ title, thoughts, onDelete, onSubmitEdit }) {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -23,7 +23,6 @@ function ContentBox({ title, thoughts, user, onDelete, onSubmitEdit }) {
             Edit
           </button>
         </div>
-        by {user.username}
       </div>
     </div>
   );

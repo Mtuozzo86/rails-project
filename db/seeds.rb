@@ -9,5 +9,7 @@
 puts "seeding"
 
 Blog.create(title: "Database seeded Title", thought: "Dummy paragraph")
+Blog.create(title: "Database seeded Title", thought: "Dummy paragraph2")
 User.create(username: "Mike")
+User.create(username: "Bill")
 puts "done seeding"

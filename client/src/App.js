@@ -2,21 +2,21 @@ import "./App.css";
 import NavBar from "./NavBar";
 import MainLogin from "./MainLogin";
 import CreateAccount from "./CreateAccount";
-import { Routes, Route, Redirect } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AllContent from "./AllContent";
 import { useState } from "react";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState("");
 
-  function handleUserSignIn(user) {
-    setUser(user);
-    console.log(user);
+  function handleUserSignIn(person) {
+    setUser(person);
   }
 
   return (
     <div>
-      <NavBar user={user} />
+      test
+      <NavBar name={user} />
       <Routes>
         <Route
           path="/login"
