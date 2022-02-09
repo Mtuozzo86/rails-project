@@ -1,0 +1,44 @@
+//   handling invalid input messages
+
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     fetch("/movies", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData),
+//     }).then((resp) => {
+//       if (resp.ok) {
+//         resp.json().then((newMovie) => console.log(newMovie));
+//       } else {
+//         resp.json().then((errorData) => setErrors(errorData.errors));
+//       }
+//     });
+//   }
+
+function handleDeleteClick() {
+  fetch(`/toys/${id}`, {
+    method: "DELETE",
+  }).then((r) => {
+    if (r.ok) {
+      onDeleteToy(toy);
+    }
+  });
+}
+
+function handleLikeClick() {
+  const updateObj = {
+    likes: toy.likes + 1,
+  };
+
+  fetch(`/toys/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updateObj),
+  })
+    .then((r) => r.json())
+    .then((updatedToy) => onUpdateToy(updatedToy));
+}

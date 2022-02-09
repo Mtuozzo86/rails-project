@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "seeding"
+
+Blog.create(title: "Database seeded Title", thought: "Dummy paragraph")
+User.create(username: "Mike")
+puts "done seeding"

@@ -1,4 +1,57 @@
-.content {
-  font-size: 30px;
+body {
+  background-color: #585858;
+}
+
+button {
+  background-color: grey;
+  margin-right: 12px;
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  transition-duration: 0.2s;
+}
+
+button:hover {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.thoughts {
+  margin-top: 50px;
   margin-left: 50px;
+}
+.container {
+  background-color: #c3c3c3;
+  padding: 4px;
+  width: 300px;
+  border-radius: 5px;
+  margin-bottom: 14px;
+}
+
+.topic-content {
+  color: black;
+  margin-top: 8px;
+}
+
+.topic-comment {
+  color: darkslategray;
+}
+
+.footer {
+  margin-top: 20px;
+  width: 75%;
+
+  font-size: 14px;
+}
+
+textarea {
+  width: 290px;
+  resize: vertical;
+}
+
+input {
+  margin-left: 6px;
+  width: 248px;
+  word-break: break-all;
 }
