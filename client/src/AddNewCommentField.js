@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-function CommentField({ onCancelClick, liftUserThoughts }) {
+function AddNewCommentField({ onCancelClick, liftUserThoughts, currentUser }) {
+  const { username } = currentUser;
+
   const [title, setTitle] = useState("");
   const [thought, setThought] = useState("");
   const [errors, setErrors] = useState([]);
@@ -22,6 +24,7 @@ function CommentField({ onCancelClick, liftUserThoughts }) {
     const userInput = {
       title,
       thought,
+      username,
     };
     fetch("/blogs", {
       method: "POST",
@@ -56,4 +59,4 @@ function CommentField({ onCancelClick, liftUserThoughts }) {
   );
 }
 
-export default CommentField;
+export default AddNewCommentField;

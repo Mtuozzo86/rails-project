@@ -4,9 +4,9 @@ import NewComment from "./NewComment";
 import ContentBox from "./ContentBox";
 
 function AllContent({ currentUser }) {
-  console.log(currentUser);
-
   const [listOfThoughts, setListOfThoughts] = useState([]);
+
+  // RENDER ALL BLOGS
 
   useEffect(() => {
     fetch("/content")
@@ -14,16 +14,22 @@ function AllContent({ currentUser }) {
       .then((stuff) => setListOfThoughts(stuff));
   }, []);
 
+  // REMOVE BLOG
+
   function handleDelete(id) {
     const newList = listOfThoughts.filter((blog) => blog.id !== id);
     setListOfThoughts(newList);
   }
+
+  // ADD NEW BLOG
 
   function handleUserThoughts(something) {
     const list = something;
     const newList = [...listOfThoughts, list];
     setListOfThoughts(newList);
   }
+
+  // EDIT BLOG
 
   function handleEdit(edits) {
     const editThoughts = listOfThoughts.map((thought) => {
@@ -36,7 +42,6 @@ function AllContent({ currentUser }) {
         return thought;
       }
     });
-    console.log(editThoughts);
     setListOfThoughts(editThoughts);
   }
 
@@ -49,12 +54,14 @@ function AllContent({ currentUser }) {
       currentUser={currentUser}
       id={thought.id}
       onSubmitEdit={handleEdit}
+      userId={thought.user_id}
+      username={thought.username}
     />
   ));
 
   return (
     <div className="thoughts">
-      <NewComment handleUserThoughts={handleUserThoughts} />
+      <NewComment handleUserThoughts={handleUserThoughts} currentUser={currentUser}/>
       {thoughts}
     </div>
   );

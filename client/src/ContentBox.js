@@ -8,8 +8,11 @@ function ContentBox({
   onDelete,
   onSubmitEdit,
   currentUser,
+  userId,
+  username,
 }) {
   const [isEditing, setIsEditing] = useState(false);
+  const loggedInUser = userId === currentUser.id;
 
   function handleEdit() {
     setIsEditing(false);
@@ -29,7 +32,8 @@ function ContentBox({
     <div>
       <div className="container">
         <div className="topic">
-          <h4>{title}</h4>
+          <h4>{title} </h4>
+          by {username}
         </div>
         <div className="topic-content">
           {isEditing ? (
@@ -44,7 +48,7 @@ function ContentBox({
           )}
         </div>
         <div className="footer">
-          {currentUser ? (
+          {loggedInUser ? (
             <>
               <button onClick={handleDelete}>Delete</button>
               <button onClick={() => setIsEditing((isEditing) => !isEditing)}>

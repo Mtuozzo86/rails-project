@@ -7,9 +7,7 @@ import AllContent from "./AllContent";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [user, setUser] = useState(null);
   const [currentUser, setCurrentUser] = useState([]);
-  console.log(currentUser);
 
   // PAGE LOAD LOOKS FOR USER SESSION
 

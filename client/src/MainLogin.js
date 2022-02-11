@@ -5,7 +5,7 @@ function MainLogin({ userInfo }) {
   const history = useNavigate();
 
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,9 +25,9 @@ function MainLogin({ userInfo }) {
   function handleUser(e) {
     setUsername(e.target.value);
   }
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
+  // function handlePassword(e) {
+  //   setPassword(e.target.value);
+  // }
 
   return (
     <div className="App">

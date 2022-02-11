@@ -6,9 +6,12 @@ class BlogsController < ApplicationController
     render json: blogs.order(created_at: :asc)
   end
 
+  # POST NEW BLOG
+
   def create
     return render json: { error: "Please login to post" }, status: :unauthorized unless session.include? :user_id
-    blog = Blog.create(blog_params)
+    user = User.find_by(id: session[:user_id])
+    blog = Blog.create(title: params[:title], thought: params[:thought], user_id: user.id, username: params[:username])
     render json: blog
   end
 
