@@ -42,3 +42,13 @@ function handleLikeClick() {
     .then((r) => r.json())
     .then((updatedToy) => onUpdateToy(updatedToy));
 }
+
+//sudo service postgresql start // starts postgresql
+
+
+// Authorize
+def show
+    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+    document = Document.find(params[:id])
+    render json: document
+  end

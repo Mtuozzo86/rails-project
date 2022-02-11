@@ -1,8 +1,29 @@
 import { useState } from "react";
 import EditThought from "./EditThought";
 
-function ContentBox({ title, thoughts, onDelete, onSubmitEdit }) {
+function ContentBox({
+  id,
+  title,
+  thoughts,
+  onDelete,
+  onSubmitEdit,
+  currentUser,
+}) {
   const [isEditing, setIsEditing] = useState(false);
+
+  function handleEdit() {
+    setIsEditing(false);
+  }
+
+  function handleDelete() {
+    fetch(`/blogs/${id}`, {
+      method: "DELETE",
+    }).then((resp) => {
+      if (resp.ok) {
+        onDelete(id);
+      }
+    });
+  }
 
   return (
     <div>
@@ -12,16 +33,25 @@ function ContentBox({ title, thoughts, onDelete, onSubmitEdit }) {
         </div>
         <div className="topic-content">
           {isEditing ? (
-            <EditThought thoughts={thoughts} onSubmitEdit={onSubmitEdit} />
+            <EditThought
+              id={id}
+              thoughts={thoughts}
+              onSubmitEdit={onSubmitEdit}
+              setEdit={handleEdit}
+            />
           ) : (
             <p className="topic-comment">{thoughts}</p>
           )}
         </div>
         <div className="footer">
-          <button onClick={() => onDelete(title)}>Delete</button>
-          <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
-            Edit
-          </button>
+          {currentUser ? (
+            <>
+              <button onClick={handleDelete}>Delete</button>
+              <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                Edit
+              </button>
+            </>
+          ) : null}
         </div>
       </div>
     </div>

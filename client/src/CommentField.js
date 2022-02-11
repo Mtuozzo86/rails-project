@@ -3,6 +3,7 @@ import { useState } from "react";
 function CommentField({ onCancelClick, liftUserThoughts }) {
   const [title, setTitle] = useState("");
   const [thought, setThought] = useState("");
+  const [errors, setErrors] = useState([]);
 
   function handleCancel(e) {
     onCancelClick(e);
@@ -18,10 +19,23 @@ function CommentField({ onCancelClick, liftUserThoughts }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const userThoughts = { title: title, thought: thought };
-    liftUserThoughts(userThoughts);
-    setTitle("");
-    setThought("");
+    const userInput = {
+      title,
+      thought,
+    };
+    fetch("/blogs", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(userInput),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((input) => liftUserThoughts(input));
+      } else {
+        resp.json().then((errorMessage) => setErrors(errorMessage.error));
+      }
+    });
   }
 
   return (
@@ -36,6 +50,7 @@ function CommentField({ onCancelClick, liftUserThoughts }) {
         </div>
         <button>Submit</button>
         <button onClick={handleCancel}>Cancel</button>
+        {errors && <p>{errors}</p>}
       </form>
     </div>
   );

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function NewComment({ handleUserThoughts }) {
   const [isCommenting, setIsCommenting] = useState(false);
+
   function handleClick() {
     setIsCommenting(true);
   }

@@ -18,7 +18,7 @@ function MainLogin({ userInfo }) {
       body: JSON.stringify({ username }),
     })
       .then((resp) => resp.json())
-      .then((user) => userInfo(user.username));
+      .then((user) => userInfo(user));
     history("/content");
   }
 
