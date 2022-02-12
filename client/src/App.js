@@ -21,6 +21,10 @@ function App() {
 
   // SIGN IN & SIGN OUT
 
+  function handleSetCurrentUser(newUser) {
+    setCurrentUser(newUser);
+  }
+
   function handleUserSignIn(person) {
     setCurrentUser(person);
   }
@@ -37,7 +41,10 @@ function App() {
           path="/login"
           element={<MainLogin userInfo={handleUserSignIn} />}
         />
-        <Route path="/create" element={<CreateAccount />} />
+        <Route
+          path="/create"
+          element={<CreateAccount setUser={handleSetCurrentUser} />}
+        />
         <Route
           path="/content"
           element={<AllContent currentUser={currentUser} />}

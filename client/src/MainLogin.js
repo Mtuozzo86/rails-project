@@ -6,6 +6,7 @@ function MainLogin({ userInfo }) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,18 +17,15 @@ function MainLogin({ userInfo }) {
         "Content-type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-    })
-      .then((resp) => resp.json())
-      .then((user) => userInfo(user));
-    history("/content");
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((exitingUser) => userInfo(exitingUser));
+        history("/content");
+      } else {
+        resp.json().then((errors) => setErrors(errors));
+      }
+    });
   }
-
-  // function handleUser(e) {
-  //   setUsername(e.target.value);
-  // }
-  // function handlePassword(e) {
-  //   setPassword(e.target.value);
-  // }
 
   return (
     <div className="App">
@@ -50,6 +48,7 @@ function MainLogin({ userInfo }) {
         </div>
         <button type="submit">Enter</button>
       </form>
+      {errors ? <p>{errors.error}</p> : null}
     </div>
   );
 }

@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function CreateAccount() {
+function CreateAccount({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+  const history = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,12 +20,14 @@ function CreateAccount() {
         password,
         password_confirmation: confirmPassword,
       }),
-    })
-      .then((resp) => resp.json())
-      .then((newUser) => console.log(newUser));
-    setUsername("");
-    setPassword("");
-    setConfirmPassword("");
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((newUser) => setUser(newUser));
+        history("/content");
+      } else {
+        resp.json().then((errors) => setErrors(errors.error));
+      }
+    });
   }
 
   return (
@@ -51,6 +56,13 @@ function CreateAccount() {
         </div>
         <button type="submit">Enter</button>
       </form>
+      {errors.length > 0 && (
+        <ul>
+          {errors.map((error) => (
+            <p key={error}>{error}</p>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
