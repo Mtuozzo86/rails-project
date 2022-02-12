@@ -5,7 +5,7 @@ function MainLogin({ userInfo }) {
   const history = useNavigate();
 
   const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,16 +15,16 @@ function MainLogin({ userInfo }) {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ username, password }),
     })
       .then((resp) => resp.json())
       .then((user) => userInfo(user));
     history("/content");
   }
 
-  function handleUser(e) {
-    setUsername(e.target.value);
-  }
+  // function handleUser(e) {
+  //   setUsername(e.target.value);
+  // }
   // function handlePassword(e) {
   //   setPassword(e.target.value);
   // }
@@ -33,11 +33,20 @@ function MainLogin({ userInfo }) {
     <div className="App">
       <form onSubmit={handleSubmit}>
         <div>
-          Username: <input onChange={handleUser} value={username} type="text" />
+          Username:{" "}
+          <input
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            type="text"
+          />
         </div>
         <div>
           Password:{" "}
-          {/* <input onChange={handlePassword} value={password} type="password" /> */}
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            type="password"
+          />
         </div>
         <button type="submit">Enter</button>
       </form>
