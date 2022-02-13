@@ -34,7 +34,7 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.permit(:title, :thought)
+    params.permit(:title, :thought, :created_at)
   end
 
   def authorize

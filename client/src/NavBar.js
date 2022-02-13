@@ -1,4 +1,4 @@
-import "./NavBar.css";
+import "./CSS/NavBar.css";
 import { Link } from "react-router-dom";
 function NavBar({ name, onLogout }) {
   const { username } = name;
@@ -8,22 +8,26 @@ function NavBar({ name, onLogout }) {
     }).then(() => onLogout());
   }
 
+  const linkStyles = {
+    textDecoration: "none",
+  };
+
   return (
     <nav>
       <h4>ThoughtSpace</h4>
       {username ? <p style={{ color: "blue" }}>Welcome, {username}!</p> : null}
       <div className="user">
         {username ? (
-          <Link to="/login">
+          <Link to="/login" style={linkStyles}>
             <p onClick={handleLogout}>Logout</p>
           </Link>
         ) : null}
 
-        <Link to="/login">
-          <p>Welcome</p>
+        <Link to="/login" style={linkStyles}>
+          <p>Login</p>
         </Link>
 
-        <Link to="/create">
+        <Link to="/create" style={linkStyles}>
           <p>Create Account</p>
         </Link>
       </div>

@@ -10,9 +10,11 @@ function ContentBox({
   currentUser,
   userId,
   username,
+  dateCreated,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const loggedInUser = userId === currentUser.id;
+  const createdPost = new Date(dateCreated);
 
   function handleEdit() {
     setIsEditing(false);
@@ -56,6 +58,7 @@ function ContentBox({
               </button>
             </>
           ) : null}
+          <p>{createdPost.toLocaleDateString()}</p>
         </div>
       </div>
     </div>

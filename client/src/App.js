@@ -1,9 +1,10 @@
-import "./App.css";
+import "./CSS/App.css";
+import "./CSS/AllContent.css";
 import NavBar from "./NavBar";
-import MainLogin from "./MainLogin";
-import CreateAccount from "./CreateAccount";
+import MainLogin from "./Pages/MainLogin";
+import CreateAccount from "./Pages/CreateAccount";
 import { Routes, Route } from "react-router-dom";
-import AllContent from "./AllContent";
+import AllContent from "./Pages/AllContent";
 import { useState, useEffect } from "react";
 
 function App() {

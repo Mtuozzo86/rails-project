@@ -1,24 +1,16 @@
-import "./AllContent.css";
+import "./CSS/AllContent.css";
 import AddNewCommentField from "./AddNewCommentField";
 import { useState } from "react";
 
 function NewComment({ handleUserThoughts, currentUser }) {
   const [isCommenting, setIsCommenting] = useState(false);
 
-  function handleClick() {
-    setIsCommenting(true);
-  }
-
-  function handleCancel() {
-    setIsCommenting(false);
-  }
-
   return (
     <div className="container">
-      <h4 onClick={handleClick}>Add New Thought</h4>
+      <h4 onClick={() => setIsCommenting(true)}>Add New Thought</h4>
       {isCommenting ? (
         <AddNewCommentField
-          onCancelClick={handleCancel}
+          onCancelClick={() => setIsCommenting(false)}
           liftUserThoughts={handleUserThoughts}
           currentUser={currentUser}
         />

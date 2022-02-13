@@ -11,14 +11,6 @@ function AddNewCommentField({ onCancelClick, liftUserThoughts, currentUser }) {
     onCancelClick(e);
   }
 
-  function handleTitle(e) {
-    setTitle(e.target.value);
-  }
-
-  function handleThoughts(e) {
-    setThought(e.target.value);
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
     const userInput = {
@@ -35,6 +27,8 @@ function AddNewCommentField({ onCancelClick, liftUserThoughts, currentUser }) {
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((input) => liftUserThoughts(input));
+        setThought("");
+        setTitle("");
       } else {
         resp.json().then((errorMessage) => setErrors(errorMessage.error));
       }
@@ -45,11 +39,14 @@ function AddNewCommentField({ onCancelClick, liftUserThoughts, currentUser }) {
     <div className="input-field">
       <form className="input" onSubmit={handleSubmit}>
         Title:
-        <input value={title} onChange={handleTitle} />
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
         <br />
         Thoughts:
         <div>
-          <textarea value={thought} onChange={handleThoughts} />
+          <textarea
+            value={thought}
+            onChange={(e) => setThought(e.target.value)}
+          />
         </div>
         <button>Submit</button>
         <button onClick={handleCancel}>Cancel</button>

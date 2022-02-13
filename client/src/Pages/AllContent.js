@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import "./AllContent.css";
-import NewComment from "./NewComment";
-import ContentBox from "./ContentBox";
+import "../CSS/AllContent.css";
+import NewComment from "../NewComment";
+import ContentBox from "../ContentBox";
 
 function AllContent({ currentUser }) {
   const [listOfThoughts, setListOfThoughts] = useState([]);
+  console.log(listOfThoughts);
 
   // RENDER ALL BLOGS
 
@@ -56,12 +57,16 @@ function AllContent({ currentUser }) {
       onSubmitEdit={handleEdit}
       userId={thought.user_id}
       username={thought.username}
+      dateCreated={thought.created_at}
     />
   ));
 
   return (
     <div className="thoughts">
-      <NewComment handleUserThoughts={handleUserThoughts} currentUser={currentUser}/>
+      <NewComment
+        handleUserThoughts={handleUserThoughts}
+        currentUser={currentUser}
+      />
       {thoughts}
     </div>
   );
