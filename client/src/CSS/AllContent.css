@@ -1,20 +1,20 @@
 body {
-  background-color: white;
+  background-color: #adadad;
 }
 
 button {
-  background-color: grey;
+  background-color: #adadad;
   margin-right: 12px;
   font-size: 10px;
   padding: 4px 12px;
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid #adadad;
   transition-duration: 0.2s;
 }
 
 button:hover {
-  background-color: white;
-  border: 1px solid black;
+  background-color: #595979;
+  border: 1px solid #000000;
 }
 
 .thoughts {
@@ -22,7 +22,7 @@ button:hover {
   margin-left: 50px;
 }
 .container {
-  background-color: #c3c3c3;
+  background-color: #ebe6e6;
   padding: 4px;
   width: 300px;
   border-radius: 5px;

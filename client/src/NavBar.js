@@ -14,7 +14,10 @@ function NavBar({ name, onLogout }) {
 
   return (
     <nav>
-      <h4>ThoughtSpace</h4>
+      <Link to="/content" style={linkStyles}>
+        <h4 style={{ color: "crimson" }}>ThoughtSpace</h4>
+      </Link>
+
       {username ? <p style={{ color: "blue" }}>Welcome, {username}!</p> : null}
       <div className="user">
         {username ? (
