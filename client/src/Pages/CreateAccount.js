@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function CreateAccount({ setUser }) {
+  const [successfulLogin, setSuccessfulLogin] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,7 +24,7 @@ function CreateAccount({ setUser }) {
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((newUser) => setUser(newUser));
-        history("/content");
+        setSuccessfulLogin("Success!  Please use login screen to continue...");
       } else {
         resp.json().then((errors) => setErrors(errors.error));
       }
@@ -56,6 +57,7 @@ function CreateAccount({ setUser }) {
         </div>
         <button type="submit">Enter</button>
       </form>
+      {successfulLogin}
       {errors.length > 0 && (
         <ul>
           {errors.map((error) => (

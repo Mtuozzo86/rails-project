@@ -19,7 +19,7 @@ function MainLogin({ userInfo }) {
       body: JSON.stringify({ username, password }),
     }).then((resp) => {
       if (resp.ok) {
-        resp.json().then((exitingUser) => userInfo(exitingUser));
+        resp.json().then((existingUser) => userInfo(existingUser));
         history("/content");
       } else {
         resp.json().then((errors) => setErrors(errors));
