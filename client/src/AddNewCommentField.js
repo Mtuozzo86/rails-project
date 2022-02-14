@@ -29,8 +29,9 @@ function AddNewCommentField({ onCancelClick, liftUserThoughts, currentUser }) {
         resp.json().then((input) => liftUserThoughts(input));
         setThought("");
         setTitle("");
+        setErrors([]);
       } else {
-        resp.json().then((errorMessage) => setErrors(errorMessage.error));
+        resp.json().then((errorMessage) => setErrors(errorMessage.errors));
       }
     });
   }
@@ -50,7 +51,10 @@ function AddNewCommentField({ onCancelClick, liftUserThoughts, currentUser }) {
         </div>
         <button>Submit</button>
         <button onClick={handleCancel}>Cancel</button>
-        {errors && <p>{errors}</p>}
+        {errors &&
+          errors.map((error) => {
+            return <p key={error}>{error}</p>;
+          })}
       </form>
     </div>
   );

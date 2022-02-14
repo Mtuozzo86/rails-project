@@ -1,6 +1,4 @@
 class BlogsController < ApplicationController
-  # before_action :authorize
-
   def index
     blogs = Blog.all
     render json: blogs.order(created_at: :asc)
@@ -9,10 +7,12 @@ class BlogsController < ApplicationController
   # POST NEW BLOG
 
   def create
-    return render json: { error: "Please login to post" }, status: :unauthorized unless session.include? :user_id
+    return render json: { errors: ["Please login to post"] }, status: :unauthorized unless session.include? :user_id
     user = User.find_by(id: session[:user_id])
-    blog = Blog.create(title: params[:title], thought: params[:thought], user_id: user.id, username: params[:username])
+    blog = Blog.create!(title: params[:title], thought: params[:thought], user_id: user.id, username: params[:username])
     render json: blog
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
   end
 
   def update
@@ -35,9 +35,5 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.permit(:title, :thought, :created_at)
-  end
-
-  def authorize
-    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
   end
 end

@@ -45,6 +45,7 @@ button:hover {
 
 .topic-comment {
   color: darkslategray;
+  overflow-wrap: break-word;
 }
 
 .footer {

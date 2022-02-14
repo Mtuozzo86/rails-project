@@ -5,7 +5,6 @@ import ContentBox from "../ContentBox";
 
 function AllContent({ currentUser }) {
   const [listOfThoughts, setListOfThoughts] = useState([]);
-  console.log(listOfThoughts);
 
   // RENDER ALL BLOGS
 
