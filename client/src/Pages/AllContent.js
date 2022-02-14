@@ -10,7 +10,7 @@ function AllContent({ currentUser }) {
   // RENDER ALL BLOGS
 
   useEffect(() => {
-    fetch("/content")
+    fetch("/blogs")
       .then((resp) => resp.json())
       .then((stuff) => setListOfThoughts(stuff));
   }, []);

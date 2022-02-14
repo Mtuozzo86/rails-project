@@ -35,7 +35,7 @@ function ContentBox({
       <div className="container">
         <div className="topic">
           <h4>{title} </h4>
-          by {username}
+          <p className="blog-author">by // {username}</p>
         </div>
         <div className="topic-content">
           {isEditing ? (
@@ -50,15 +50,15 @@ function ContentBox({
           )}
         </div>
         <div className="footer">
+          <p>{createdPost.toLocaleDateString()}</p>
           {loggedInUser ? (
-            <>
+            <div>
               <button onClick={handleDelete}>Delete</button>
               <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                 Edit
               </button>
-            </>
+            </div>
           ) : null}
-          <p>{createdPost.toLocaleDateString()}</p>
         </div>
       </div>
     </div>

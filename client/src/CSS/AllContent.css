@@ -1,14 +1,14 @@
 body {
-  background-color: #adadad;
+  background-color: #ffffff;
 }
 
 button {
-  background-color: #adadad;
+  background-color: rgb(184, 78, 78);
   margin-right: 12px;
   font-size: 10px;
   padding: 4px 12px;
   border-radius: 5px;
-  border: 1px solid #adadad;
+  border: 1px solid #000000;
   transition-duration: 0.2s;
 }
 
@@ -18,11 +18,20 @@ button:hover {
 }
 
 .thoughts {
-  margin-top: 50px;
-  margin-left: 50px;
+  background-color: #572929;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  color: rgb(184, 78, 78);
+  /* text-align: center; */
 }
 .container {
-  background-color: #ebe6e6;
+  margin-top: 50px;
+  margin-left: 50px;
+  background-color: #ffffff;
   padding: 4px;
   width: 300px;
   border-radius: 5px;
@@ -40,14 +49,19 @@ button:hover {
 
 .footer {
   margin-top: 20px;
-  width: 75%;
-
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   font-size: 14px;
 }
 
 textarea {
   width: 290px;
   resize: vertical;
+}
+
+.blog-author {
+  color: rgb(0, 0, 0);
 }
 
 input {
