@@ -38,6 +38,7 @@ function App() {
       <NavBar name={currentUser} onLogout={handleLogout} />
       {/* testing branch */}
       {/* testing  */}
+      {/* testing again */}
       <Routes>
         <Route
           path="/login"
