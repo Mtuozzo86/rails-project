@@ -36,7 +36,7 @@ function App() {
   return (
     <div>
       <NavBar name={currentUser} onLogout={handleLogout} />
-
+      {/* testing branch */}
       <Routes>
         <Route
           path="/login"
