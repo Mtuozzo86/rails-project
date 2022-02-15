@@ -15,7 +15,7 @@ function NavBar({ name, onLogout }) {
 
   return (
     <nav>
-      <Link to="/content" style={linkStyles}>
+      <Link to="/" style={linkStyles}>
         <h4 style={{ color: "crimson" }}>ThoughtSpace</h4>
       </Link>
 

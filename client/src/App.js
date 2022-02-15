@@ -46,10 +46,7 @@ function App() {
           path="/create"
           element={<CreateAccount setUser={handleSetCurrentUser} />}
         />
-        <Route
-          path="/content"
-          element={<AllContent currentUser={currentUser} />}
-        />
+        <Route path="/" element={<AllContent currentUser={currentUser} />} />
       </Routes>
     </div>
   );

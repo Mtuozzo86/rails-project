@@ -20,7 +20,7 @@ function MainLogin({ userInfo }) {
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((existingUser) => userInfo(existingUser));
-        history("/content");
+        history("/");
       } else {
         resp.json().then((errors) => setErrors(errors));
       }
