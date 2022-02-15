@@ -23,8 +23,14 @@ function CreateAccount({ setUser }) {
       }),
     }).then((resp) => {
       if (resp.ok) {
-        resp.json().then((newUser) => setUser(newUser));
-        setSuccessfulLogin("Success!  Please use login screen to continue...");
+        resp
+          .json()
+          .then(() =>
+            setSuccessfulLogin(
+              "Success!  Please use login screen to continue..."
+            )
+          );
+        setErrors([]);
       } else {
         resp.json().then((errors) => setErrors(errors.error));
       }
