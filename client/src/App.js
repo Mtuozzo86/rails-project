@@ -36,9 +36,7 @@ function App() {
   return (
     <div>
       <NavBar name={currentUser} onLogout={handleLogout} />
-      {/* testing branch */}
-      {/* testing  */}
-      {/* testing again */}
+
       <Routes>
         <Route
           path="/login"
@@ -48,6 +46,7 @@ function App() {
           path="/create"
           element={<CreateAccount setUser={handleSetCurrentUser} />}
         />
+
         <Route path="/" element={<AllContent currentUser={currentUser} />} />
       </Routes>
     </div>

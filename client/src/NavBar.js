@@ -16,23 +16,25 @@ function NavBar({ name, onLogout }) {
   return (
     <nav>
       <Link to="/" style={linkStyles}>
-        <h4 style={{ color: "crimson" }}>ThoughtSpace</h4>
+        <h4 className="h4-nav">ThoughtSpace</h4>
       </Link>
 
       {username ? <p className="user-logged-in">Welcome, {username}!</p> : null}
       <div className="user">
         {username ? (
           <Link to="/login" style={linkStyles}>
-            <p onClick={handleLogout}>Logout</p>
+            <p className="p-nav" onClick={handleLogout}>
+              Logout
+            </p>
           </Link>
         ) : null}
 
         <Link to="/login" style={linkStyles}>
-          <p>Login</p>
+          <p className="p-nav">Login</p>
         </Link>
 
         <Link to="/create" style={linkStyles}>
-          <p>Create Account</p>
+          <p className="p-nav">Create Account</p>
         </Link>
       </div>
     </nav>
