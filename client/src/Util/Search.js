@@ -1,13 +1,11 @@
 import "./Search.css";
 
-function Search({ onSearch }) {
-  // const [search, setSearch] = useState("");
-
+function Search({ onSearch, searchValue }) {
   return (
     <div className="search-container">
       <input
         className="main-page-search"
-        // value={search}
+        value={searchValue}
         type="text"
         onChange={(e) => onSearch(e.target.value)}
       />

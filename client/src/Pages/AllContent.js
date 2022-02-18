@@ -6,6 +6,8 @@ import Search from "../Util/Search";
 
 function AllContent({ currentUser }) {
   const [listOfThoughts, setListOfThoughts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  console.log(searchTerm);
 
   // RENDER ALL BLOGS
 
@@ -46,27 +48,31 @@ function AllContent({ currentUser }) {
     setListOfThoughts(editThoughts);
   }
 
-  function handleSearch(searched) {
-    const searchByName = listOfThoughts.filter((blog) => {
-      return blog.username.toLowerCase().includes(searched.toLowerCase());
-    });
-    console.log(searchByName);
-  }
+  // function handleSearch(searched) {
+  //   const searchByName = listOfThoughts.filter((blog) => {
+  //     return blog.username.toLowerCase().includes(searched.toLowerCase());
+  //   });
+  //   console.log(searchByName);
+  // }
 
-  const thoughts = listOfThoughts.map((thought, index) => (
-    <ContentBox
-      onDelete={handleDelete}
-      key={index}
-      title={thought.title}
-      thoughts={thought.thought}
-      currentUser={currentUser}
-      id={thought.id}
-      onSubmitEdit={handleEdit}
-      userId={thought.user_id}
-      username={thought.username}
-      dateCreated={thought.created_at}
-    />
-  ));
+  const thoughts = listOfThoughts
+    .filter((blog) => {
+      return blog.username.toLowerCase().includes(searchTerm.toLowerCase());
+    })
+    .map((thought, index) => (
+      <ContentBox
+        onDelete={handleDelete}
+        key={index}
+        title={thought.title}
+        thoughts={thought.thought}
+        currentUser={currentUser}
+        id={thought.id}
+        onSubmitEdit={handleEdit}
+        userId={thought.user_id}
+        username={thought.username}
+        dateCreated={thought.created_at}
+      />
+    ));
 
   return (
     <>
@@ -75,7 +81,7 @@ function AllContent({ currentUser }) {
           handleUserThoughts={handleUserThoughts}
           currentUser={currentUser}
         />
-        <Search onSearch={handleSearch} />
+        <Search searchValue={searchTerm} onSearch={setSearchTerm} />
       </div>
       {thoughts}
     </>
