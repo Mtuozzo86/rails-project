@@ -25,10 +25,11 @@ button:hover {
 .thoughts {
   /* background-color: #572929; */
   /* min-height: 100px; */
+  padding-top: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   /* align-items: center; */
-  /* justify-content: center; */
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: rgb(184, 78, 78);
   /* text-align: center; */
