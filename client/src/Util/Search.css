@@ -1,0 +1,10 @@
+.main-page-search {
+  position: relative;
+  padding: 4px;
+  right: 10px;
+
+  flex-grow: 0;
+}
+
+.search-container {
+}

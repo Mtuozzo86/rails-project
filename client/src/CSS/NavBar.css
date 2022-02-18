@@ -1,19 +1,32 @@
 nav {
   background-color: rgb(0, 0, 0);
-  position: absolute;
+  /* position: absolute; */
   top: 0px;
   width: 100%;
   display: flex;
   font-size: 14px;
-  height: 25px;
+  height: 45px;
   align-items: center;
   justify-content: space-between;
 }
 
+.h4-nav {
+  color: crimson;
+  font-size: 20px;
+}
+.h4-nav:hover {
+  color: white;
+}
+
 p {
-  font-size: 12px;
+  font-size: 14px;
   color: crimson;
   padding: 0px 16px;
+}
+
+.p-nav {
+  color: crimson;
+  font-size: 20px;
 }
 
 .user {

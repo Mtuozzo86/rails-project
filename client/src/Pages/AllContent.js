@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../CSS/AllContent.css";
 import NewComment from "../NewComment";
 import ContentBox from "../ContentBox";
+import Search from "../Util/Search";
 
 function AllContent({ currentUser }) {
   const [listOfThoughts, setListOfThoughts] = useState([]);
@@ -45,6 +46,13 @@ function AllContent({ currentUser }) {
     setListOfThoughts(editThoughts);
   }
 
+  function handleSearch(searched) {
+    const searchByName = listOfThoughts.filter((blog) => {
+      return blog.username.toLowerCase().includes(searched.toLowerCase());
+    });
+    console.log(searchByName);
+  }
+
   const thoughts = listOfThoughts.map((thought, index) => (
     <ContentBox
       onDelete={handleDelete}
@@ -61,13 +69,16 @@ function AllContent({ currentUser }) {
   ));
 
   return (
-    <div className="thoughts">
-      <NewComment
-        handleUserThoughts={handleUserThoughts}
-        currentUser={currentUser}
-      />
+    <>
+      <div className="thoughts">
+        <NewComment
+          handleUserThoughts={handleUserThoughts}
+          currentUser={currentUser}
+        />
+        <Search onSearch={handleSearch} />
+      </div>
       {thoughts}
-    </div>
+    </>
   );
 }
 

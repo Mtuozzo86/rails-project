@@ -1,5 +1,10 @@
 body {
-  background-color: #ffffff;
+  background-color: #572929;
+}
+p {
+  font-size: 14px;
+  color: crimson;
+  padding: 0px 16px;
 }
 
 button {
@@ -18,8 +23,8 @@ button:hover {
 }
 
 .thoughts {
-  background-color: #572929;
-  min-height: 100vh;
+  /* background-color: #572929; */
+  /* min-height: 100px; */
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -29,13 +34,19 @@ button:hover {
   /* text-align: center; */
 }
 .container {
-  margin-top: 50px;
+  margin-top: 70px;
   margin-left: 50px;
   background-color: #ffffff;
   padding: 4px;
   width: 300px;
   border-radius: 5px;
-  margin-bottom: 14px;
+}
+
+.new-comment-container {
+  background-color: #ffffff;
+  padding: 4px;
+  width: 300px;
+  border-radius: 5px;
 }
 
 .topic-content {
@@ -66,6 +77,8 @@ textarea {
 }
 
 input {
+  border: none;
+  padding: 4px;
   margin-left: 6px;
   width: 248px;
   word-break: break-all;

@@ -6,7 +6,7 @@ function NewComment({ handleUserThoughts, currentUser }) {
   const [isCommenting, setIsCommenting] = useState(false);
 
   return (
-    <div className="container">
+    <div className="new-comment-container">
       <h4 onClick={() => setIsCommenting(true)}>Add New Thought</h4>
       {isCommenting ? (
         <AddNewCommentField

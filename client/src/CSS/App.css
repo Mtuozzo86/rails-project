@@ -14,3 +14,7 @@
   color: rgb(184, 78, 78);
   text-align: center;
 }
+
+.test {
+  display: flex;
+}
