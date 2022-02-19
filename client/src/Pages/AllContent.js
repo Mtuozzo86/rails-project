@@ -14,7 +14,7 @@ function AllContent({ currentUser }) {
   useEffect(() => {
     fetch("/blogs")
       .then((resp) => resp.json())
-      .then((stuff) => setListOfThoughts(stuff));
+      .then((blogs) => setListOfThoughts(blogs));
   }, []);
 
   // REMOVE BLOG
@@ -47,13 +47,6 @@ function AllContent({ currentUser }) {
     });
     setListOfThoughts(editThoughts);
   }
-
-  // function handleSearch(searched) {
-  //   const searchByName = listOfThoughts.filter((blog) => {
-  //     return blog.username.toLowerCase().includes(searched.toLowerCase());
-  //   });
-  //   console.log(searchByName);
-  // }
 
   const thoughts = listOfThoughts
     .filter((blog) => {

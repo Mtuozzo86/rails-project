@@ -78,7 +78,7 @@ textarea {
 }
 
 input {
-  border: none;
+  border: #000000 solid 1px;
   padding: 4px;
   margin-left: 6px;
   width: 248px;
