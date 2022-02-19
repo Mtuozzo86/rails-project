@@ -16,13 +16,13 @@ class BlogsController < ApplicationController
   end
 
   def update
+    
     blog = Blog.find_by(id: params[:id])
-    if blog
-      blog.update(thought: params[:thought])
-      render json: blog
-    else
-      render json: { error: "error updating thoughts" }, status: :unprocessable_entity
-    end
+    blog.update!(thought: params[:thought])
+    render json: blog
+
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { errors: e.record.errors.full_messages}, status: :unprocessable_entity
   end
 
   def destroy

@@ -7,7 +7,6 @@ import Search from "../Util/Search";
 function AllContent({ currentUser }) {
   const [listOfThoughts, setListOfThoughts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(searchTerm);
 
   // RENDER ALL BLOGS
 
